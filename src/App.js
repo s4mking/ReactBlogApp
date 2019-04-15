@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Articles from './Components/Screens/Articles'
+import Article from './Components/Screens/Article'
+import Connect from './Components/Screens/Connect'
+import updatePassword from './Components/Screens/updatePassword'
+import createArticle from './Components/Screens/createArticle'
+import Create from './Components/Screens/Create'
+import Userinfo from './Components/Screens/Userinfo';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarPage from './Components/Screens/navbar'
+import Disconnect from './Components/Screens/Disconnect'
+//ComponentWillUnmount quand la vue va disparaitre ou didmount quand la vue va apparaitre
 
 class App extends Component {
+ 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      
+        <Router>
+          <div>
+            <Route path={'/'} component={NavbarPage} />
+            <Route exact path={'/'} component={Articles} />
+            <Route path={'/create'} component={Create} />
+            <Route path={'/connect'} component={Connect} />
+            <Route path={'/articles/:articleID'} component={Article} />
+            <Route path={'/userInfo'} component={Userinfo} />
+            <Route path={'/updatePassword'} component={updatePassword} />
+            <Route path={'/createArticle'} component={createArticle} />
+            <Route path={'/disconnect'} component={Disconnect} />
+          </div>
+        </Router>
     );
   }
 }
-
 export default App;
