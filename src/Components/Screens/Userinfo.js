@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../Modules/api';
 import {Form,FormControl,Button } from 'react-bootstrap'
+import Moment from 'moment';
 
 class Userinfo extends Component {
     constructor(props) {
@@ -48,7 +49,8 @@ class Userinfo extends Component {
             </div>
             <div className="form-group">
               <label for="exampleInputEmail">Votre date de naissance</label>
-              <input name="date" type="date" className="form-control" placeholder={this.state.profile.birthdate} ref="date"/>
+             
+              <input name="date" type="date" className="form-control" placeholder={Moment(this.state.profile.birthdate).format('DD/MM/YYYY')} ref="date"/>
             </div>
             <Button type="submit" variant="success">Modifier</Button>
         </form>

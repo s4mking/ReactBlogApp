@@ -21,14 +21,16 @@ class App extends Component {
         <Router>
           <div>
             <Route path={'/'} component={NavbarPage} />
-            <Route exact path={'/'} component={Articles} />
-            <Route path={'/create'} component={Create} />
-            <Route path={'/connect'} component={Connect} />
-            <Route path={'/articles/:articleID'} component={Article} />
-            <Route path={'/userInfo'} component={Userinfo} />
-            <Route path={'/updatePassword'} component={updatePassword} />
-            <Route path={'/createArticle'} component={createArticle} />
-            <Route path={'/disconnect'} component={Disconnect} />
+            <div className='container'>
+              <Route exact path={'/'} component={Articles} />
+              <Route path={'/create'} component={Create} />
+              <Route path={'/connect'} component={Connect} />
+              <Route path={'/articles/:articleID'} component={Article} />
+              <Route path={'/userInfo'} component={Userinfo} />
+              <Route path={'/updatePassword'} component={updatePassword} />
+              <Route path={'/createArticle'} component={createArticle} />
+              <Route path={'/disconnect'} component={Disconnect} />
+            </div>
           </div>
         </Router>
     );

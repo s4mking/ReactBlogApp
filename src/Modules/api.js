@@ -4,7 +4,6 @@ export default {
         return new Promise((resolve) => {
             fetch('http://blog.etherial.fr/users',{
                 method: 'POST', 
-                // body: JSON.stringify(data),
                 body: JSON.stringify(data),
                 headers: {
                     "Content-Type": "application/json"
@@ -62,18 +61,28 @@ export default {
                     } )
                 })
             })
-        }, 
-    getArticle: () => {
+        },getCategories: () => {
+            return new Promise((resolve) => {
+                fetch( 'http://blog.etherial.fr/articles/categories',{
+                    method: 'GET', 
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                }).then((data) => {
+                        data.json().then((json)=> {
+                            console.dir(json)
+                            resolve(json)
+                        } )
+                    })
+                })
+            },
+    getArticle: (id) => {
         return new Promise((resolve) => {
-            var myToken = localStorage.getItem('token');
-            fetch( 'http://blog.etherial.fr/users/me',{
+            fetch( 'http://blog.etherial.fr/articles/'+id,{
                 method: 'GET', 
                 headers:{
-                    'Content-Type':'application/json',
-                    // 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE1NTUzMTY0NjV9.BsDbKginp9LAY8LJBysLpxAb-QVlsT345EtNzHOhIFU'
-                    'Authorization': myToken    
+                    'Content-Type':'application/json'
                 }
-                    // body:"message="+messageInput
             }).then((data) => {
                     data.json().then((json)=> {
                         console.dir(json)
@@ -127,7 +136,6 @@ export default {
                     headers:{
                         'Content-Type':'application/json',
                         'Authorization': myToken
-                        // 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJpYXQiOjE1NTUzMTY0NjV9.BsDbKginp9LAY8LJBysLpxAb-QVlsT345EtNzHOhIFU'
                         }
                 }).then((data) => {
                         data.json().then((json)=> {

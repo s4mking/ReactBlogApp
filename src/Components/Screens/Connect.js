@@ -5,24 +5,38 @@ import { Redirect } from 'react-router-dom'
 class Create extends Component {
     constructor(props) {
         super(props);
-        
+        this.state = {connect: 0};
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-
+      state = {
+        redirect: false
+      }
+    
+      setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
+      }
+      renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/' />
+        }
+      }
       handleSubmit(event) { 
         event.preventDefault();
         var mail =  (this.refs.mail.value)
         var password = (this.refs.pass.value)
         api.connectUser(mail,password).then((response) => {
-        console.dir(response.data.token)
+        console.dir(response)
         localStorage.setItem('token', 'Bearer '+response.data.token);
-        return <Redirect to='/' />
+        this.setRedirect()
      })           
     }
     
   render() {
     return (
         <div>
+        {this.renderRedirect()}
          <h1>Connexion du compte</h1>
          <form onSubmit={this.handleSubmit}>        
           <div className="form-group">
