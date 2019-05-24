@@ -2,18 +2,23 @@ import React, { Component } from 'react'
 import { Navbar,Nav,NavItem,MenuItem,NavDropdown,Button,Form,FormControl } from 'react-bootstrap'
 import api from '../../Modules/api';
 import { builtinModules } from 'module';
+// import { Collapse, CardBody, Card } from 'reactstrap';
 import CreateArticle from './createArticle';
 
 class Articles extends Component {
 
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
       this.state = {
-      articles: []
+      articles: [],
+      collapse: false 
     }
 
   }
-
+  toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
   componentDidMount() {
    
     api.getAllArticles().then((json) => {
@@ -34,8 +39,18 @@ class Articles extends Component {
 
 
       <div className="container">
-          <CreateArticle/>
-
+       {/* <div>
+        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
+            <CardBody>
+           
+            </CardBody>
+          </Card>
+        </Collapse>
+      </div>
+           */}
+           <CreateArticle/>
         <div className="row pt-5">
           <div className="col-12 col-lg-6 offset-lg-3">
             <h1 className="text-center">My little tiny blog</h1>
