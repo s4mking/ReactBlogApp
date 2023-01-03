@@ -12,7 +12,7 @@
     "react-bootstrap-date-picker": "^5.1.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "react-select": "^2.4.3",
     "reactstrap": "^8.0.0"
   },
